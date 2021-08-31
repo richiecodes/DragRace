@@ -6,7 +6,7 @@ import java.util.Scanner;
 
 public class DragRace {
     private boolean run = true;
-    private List<Car> cars = new ArrayList<>();
+    private final List<Car> cars = new ArrayList<>();
     Scanner in = new Scanner(System.in);
     private int destination;
     private int ticks = 0;
@@ -33,7 +33,8 @@ public class DragRace {
 
             if (destination <= 0) {
                 destination = 0;
-                System.out.println("\nDestination reached!\nYou've arrived in " + ticks + " hours!");
+                System.out.println("\nDestination reached!\nYou've arrived in "
+                        + ticks + " hours!");
                 run = false;
             }
         }

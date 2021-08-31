@@ -5,9 +5,9 @@ import java.util.Random;
 public class Sedan extends Car {
 
     private int speed = 0;
-    private String name;
+    private final String name;
     private int maxSpeed;
-    private Engine engine;
+    private final Engine engine;
     private int friction;
 
     public Sedan(String name) {
@@ -36,9 +36,11 @@ public class Sedan extends Car {
                     break;
             }
             if (friction > 0) {
-                System.out.println("You experienced some friction. Speed is affected by " + friction + " mph :(\n");
+                System.out.println("You experienced some friction. Speed is affected by "
+                        + friction + " mph :(\n");
             }
-            System.out.println("Speeding up! Speed is now: " + speed + "/" + maxSpeed + " mph\n");
+            System.out.println("Speeding up! Speed is now: " + speed + "/" + maxSpeed +
+                    " mph\n");
         } else if (speed == maxSpeed) {
             System.out.println("Max speed limit reached!\n");
         }
@@ -48,7 +50,8 @@ public class Sedan extends Car {
     public void slowdown() {
         if (speed > 0) {
             speed -= 10;
-            System.out.println("Slowing! Speed is now: " + speed + "/" + maxSpeed + " mph\n");
+            System.out.println("Slowing! Speed is now: " + speed + "/" + maxSpeed +
+                    " mph\n");
         } else if (speed == 0) {
             System.out.println("Car isn't moving!\n");
         }
@@ -96,6 +99,7 @@ public class Sedan extends Car {
                 accelRate += "30";
         }
 
-        return (name + "\nEngine Type: " + engine.getName() + "\tAcceleration Rate: " + accelRate + " mph\tMax Speed: " + maxSpeed + "\n");
+        return (name + "\nEngine Type: " + engine.getName() + "\tAcceleration Rate: "
+                + accelRate + " mph\tMax Speed: " + maxSpeed + "\n");
     }
 }

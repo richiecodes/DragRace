@@ -3,10 +3,6 @@ package com.richiecodes;
 public class Engine {
     private String name;
 
-    public Engine() {
-
-    }
-
     public void setName(String name) {
         this.name = name;
     }
