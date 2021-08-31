@@ -12,8 +12,9 @@ public class DragRace {
     private int ticks = 0;
 
     public DragRace() {
-        cars.add(new Sedan("Roadster", 200));
-        cars.add(new Sedan("Taurus", 100));
+        cars.add(new Sedan("Roadster"));
+        cars.add(new Sedan("Dodge Ram"));
+        cars.add(new Sedan("Tesla Model S"));
         game();
     }
 
@@ -74,18 +75,21 @@ public class DragRace {
     public void menu(int choice, Car playerCar) {
         switch (choice) {
             case 1:
+                cls();
                 playerCar.accelerate();
                 ticks++;
                 destination -= playerCar.getCurrentSpeed();
                 break;
 
             case 2:
+                cls();
                 playerCar.slowdown();
                 ticks++;
                 destination -= playerCar.getCurrentSpeed();
                 break;
 
             case 3:
+                cls();
                 System.out.println("Chillin' at " + playerCar.getCurrentSpeed() + " mph!");
                 ticks++;
                 destination -= playerCar.getCurrentSpeed();

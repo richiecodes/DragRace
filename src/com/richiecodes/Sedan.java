@@ -1,23 +1,42 @@
 package com.richiecodes;
 
+import java.util.Random;
+
 public class Sedan extends Car {
 
     private int speed = 0;
     private String name;
     private int maxSpeed;
+    private Engine engine;
+    private int friction;
 
-    public Sedan(String name, int maxSpeed) {
+    public Sedan(String name) {
         this.name = name;
-        this.maxSpeed = maxSpeed;
+        engine = new Engine();
+        setEngine(name);
     }
 
     @Override
     public void accelerate() {
+        Random rand = new Random();
+        friction = rand.nextInt(10);
+
         if (speed < maxSpeed) {
-            if(name.equals("Roadster")) {
-                speed += 30;
-            } else {
-                speed += 10;
+            switch (engine.getName()) {
+                case "V6":
+                    speed += 10 - friction;
+                    break;
+
+                case "V8":
+                    speed += 20 - friction;
+                    break;
+
+                case "Electric":
+                    speed += 30 - friction;
+                    break;
+            }
+            if (friction > 0) {
+                System.out.println("You experienced some friction. Speed is affected by " + friction + " mph :(\n");
             }
             System.out.println("Speeding up! Speed is now: " + speed + "/" + maxSpeed + " mph\n");
         } else if (speed == maxSpeed) {
@@ -41,7 +60,42 @@ public class Sedan extends Car {
     }
 
     @Override
+    public void setEngine(String name) {
+        switch (name) {
+            case "Roadster":
+                engine.setName("V6");
+                maxSpeed = 300;
+                break;
+
+            case "Dodge Ram":
+                engine.setName("V8");
+                maxSpeed = 250;
+                break;
+
+            case "Tesla Model S":
+                engine.setName("Electric");
+                maxSpeed = 350;
+                break;
+        }
+    }
+
+    @Override
     public String toString() {
-        return name + "\tMax Speed: " + maxSpeed;
+        String accelRate = "";
+
+        switch (engine.getName()) {
+            case "V6":
+                accelRate += "10";
+                break;
+
+            case "V8":
+                accelRate += "20";
+                break;
+
+            case "Electric":
+                accelRate += "30";
+        }
+
+        return (name + "\nEngine Type: " + engine.getName() + "\tAcceleration Rate: " + accelRate + " mph\tMax Speed: " + maxSpeed + "\n");
     }
 }
